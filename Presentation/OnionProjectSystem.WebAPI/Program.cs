@@ -1,4 +1,3 @@
-
 namespace OnionProjectSystem.WebAPI
 {
     public class Program
@@ -11,14 +10,23 @@ namespace OnionProjectSystem.WebAPI
 
             builder.Services.AddControllers();
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-            builder.Services.AddOpenApi();
+            builder.Services.AddEndpointsApiExplorer();
+            builder.Services.AddSwaggerGen();
+
+            var environment = builder.Environment;
+
+            builder.Configuration
+                .SetBasePath(environment.ContentRootPath)
+                .AddJsonFile("appsettings.json",optional:false)
+                .AddJsonFile($"appsettings.{environment.EnvironmentName}.json",optional:true);
 
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
-                app.MapOpenApi();
+                app.UseSwagger();
+                app.UseSwaggerUI();
             }
 
             app.UseAuthorization();
