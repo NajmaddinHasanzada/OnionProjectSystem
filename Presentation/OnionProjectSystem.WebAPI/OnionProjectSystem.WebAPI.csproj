@@ -20,8 +20,4 @@
     <ProjectReference Include="..\..\Infrastructure\OnionProjectSystem.Persistence\OnionProjectSystem.Persistence.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
 </Project>

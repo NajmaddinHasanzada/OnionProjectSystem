@@ -1,4 +1,6 @@
 using OnionProjectSystem.Persistence;
+using OnionProjectSystem.Application;
+
 namespace OnionProjectSystem.WebAPI
 {
     public class Program
@@ -22,6 +24,7 @@ namespace OnionProjectSystem.WebAPI
                 .AddJsonFile($"appsettings.{environment.EnvironmentName}.json",optional:true);
 
             builder.Services.AddPersistence(builder.Configuration);
+            builder.Services.AddApplication();
 
             var app = builder.Build();
 
