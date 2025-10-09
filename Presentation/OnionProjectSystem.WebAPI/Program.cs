@@ -1,6 +1,6 @@
 using OnionProjectSystem.Persistence;
 using OnionProjectSystem.Application;
-
+using OnionProjectSystem.Mapper;
 namespace OnionProjectSystem.WebAPI
 {
     public class Program
@@ -25,6 +25,7 @@ namespace OnionProjectSystem.WebAPI
 
             builder.Services.AddPersistence(builder.Configuration);
             builder.Services.AddApplication();
+            builder.Services.AddCustomMapper();
 
             var app = builder.Build();
 

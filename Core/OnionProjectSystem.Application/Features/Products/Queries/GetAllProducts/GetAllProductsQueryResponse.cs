@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OnionProjectSystem.Application.DTOs;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,5 +14,6 @@ namespace OnionProjectSystem.Application.Features.Products.Queries.GetAllProduct
         public decimal Price { get; set; }
         public decimal Discount { get; set; }
         public int Stock { get; set; }
+        public BrandDto Brand { get; set; }
     }
 }
