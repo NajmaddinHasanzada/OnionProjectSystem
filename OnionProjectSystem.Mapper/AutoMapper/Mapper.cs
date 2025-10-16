@@ -1,11 +1,5 @@
 ﻿using AutoMapper;
-using AutoMapper.Configuration.Conventions;
 using AutoMapper.Internal;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OnionProjectSystem.Mapper.AutoMapper
 {
@@ -16,7 +10,7 @@ namespace OnionProjectSystem.Mapper.AutoMapper
         public TDestination Map<TDestination, TSource>(TSource source, string? ignore = null)
         {
             Config<TDestination, TSource>(5, ignore);
-            return MapperContainer.Map<TSource,TDestination>(source);
+            return MapperContainer.Map<TSource, TDestination>(source);
         }
         public IList<TDestination> Map<TDestination, TSource>(IList<TSource> sources, string? ignore = null)
         {
@@ -31,7 +25,7 @@ namespace OnionProjectSystem.Mapper.AutoMapper
         public IList<TDestination> Map<TDestination>(IList<object> sources, string? ignore = null)
         {
             Config<TDestination, IList<object>>(5, ignore);
-            return MapperContainer.Map< IList<TDestination>>(sources);
+            return MapperContainer.Map<IList<TDestination>>(sources);
         }
         protected void Config<TDestination, TSource>(int depth = 5, string? ignore = null)
         {
@@ -48,14 +42,20 @@ namespace OnionProjectSystem.Mapper.AutoMapper
                 {
                     if (ignore is not null)
                     {
-                        cfg.CreateMap(pair.SourceType, pair.DestinationType).MaxDepth(depth).ForMember(ignore, x => x.Ignore()).ReverseMap();
+                        cfg.CreateMap(pair.SourceType, pair.DestinationType)
+                           .MaxDepth(depth)
+                           .ForMember(ignore, x => x.Ignore())
+                           .ReverseMap();
                     }
                     else
                     {
-                        cfg.CreateMap(pair.SourceType, pair.DestinationType).MaxDepth(depth).ReverseMap();
+                        cfg.CreateMap(pair.SourceType, pair.DestinationType)
+                           .MaxDepth(depth)
+                           .ReverseMap();
                     }
                 }
-            }, null);
+            });
+
             MapperContainer = config.CreateMapper();
         }
     }

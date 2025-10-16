@@ -26,7 +26,7 @@ namespace OnionProjectSystem.WebAPI
             builder.Services.AddPersistence(builder.Configuration);
             builder.Services.AddApplication();
             builder.Services.AddCustomMapper();
-
+            builder.Services.AddLogging();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
