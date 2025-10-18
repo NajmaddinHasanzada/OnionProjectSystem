@@ -1,12 +1,9 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using OnionProjectSystem.Application.Exceptions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-
+using FluentValidation;
+using MediatR;
+using OnionProjectSystem.Application.Beheviors;
 namespace OnionProjectSystem.Application
 {
     public static class ApplicationRegistration
@@ -18,6 +15,12 @@ namespace OnionProjectSystem.Application
             services.AddTransient<ExceptionMiddleware>();
 
             services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(assembly));
+
+            services.AddValidatorsFromAssembly(assembly);
+
+            ValidatorOptions.Global.LanguageManager.Culture = new System.Globalization.CultureInfo("az");
+
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(FluentValidationBehevior<,>));
         }
     }
 }
