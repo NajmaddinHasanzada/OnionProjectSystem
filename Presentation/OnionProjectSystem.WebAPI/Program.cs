@@ -1,4 +1,6 @@
 using OnionProjectSystem.Persistence;
+using OnionProjectSystem.Application;
+using OnionProjectSystem.Mapper;
 namespace OnionProjectSystem.WebAPI
 {
     public class Program
@@ -22,7 +24,9 @@ namespace OnionProjectSystem.WebAPI
                 .AddJsonFile($"appsettings.{environment.EnvironmentName}.json",optional:true);
 
             builder.Services.AddPersistence(builder.Configuration);
-
+            builder.Services.AddApplication();
+            builder.Services.AddCustomMapper();
+            builder.Services.AddLogging();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

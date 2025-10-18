@@ -17,11 +17,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\..\Infrastructure\OnionProjectSystem.Persistence\OnionProjectSystem.Persistence.csproj" />
+    <ProjectReference Include="..\..\OnionProjectSystem.Mapper\OnionProjectSystem.Mapper.csproj" />
   </ItemGroup>
 
 </Project>

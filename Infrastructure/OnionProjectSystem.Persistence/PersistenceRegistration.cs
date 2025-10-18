@@ -1,7 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using OnionProjectSystem.Application.Interfaces.Repositories;
+using OnionProjectSystem.Application.Interfaces.UnitOfWorks;
 using OnionProjectSystem.Persistence.Context;
+using OnionProjectSystem.Persistence.Repositories;
+using OnionProjectSystem.Persistence.UnitOfWorks;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +22,10 @@ namespace OnionProjectSystem.Persistence
             {
                 options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
             });
+            services.AddScoped(typeof(IReadRepository<>),typeof(ReadRepository<>));
+            services.AddScoped(typeof(IWriteRepository<>), typeof(WriteRepository<>));
+
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
         }
     }
 }

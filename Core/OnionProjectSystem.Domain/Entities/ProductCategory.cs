@@ -7,16 +7,11 @@ using System.Threading.Tasks;
 
 namespace OnionProjectSystem.Domain.Entities
 {
-    public class Detail:EntityBase
+    public class ProductCategory:IEntityBase
     {
-        public Detail() { }
-        public Detail(string title, int categoryId)
-        {
-            Title = title;
-            CategoryId = categoryId;
-        }
-        public string Title { get; set; }
+        public int ProductId { get; set; }
         public int CategoryId { get; set; }
+        public Product Product { get; set; }
         public Category Category { get; set; }
     }
 }
