@@ -16,8 +16,4 @@
     <ProjectReference Include="..\OnionProjectSystem.Domain\OnionProjectSystem.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Features\Products\Command\" />
-  </ItemGroup>
-
 </Project>
