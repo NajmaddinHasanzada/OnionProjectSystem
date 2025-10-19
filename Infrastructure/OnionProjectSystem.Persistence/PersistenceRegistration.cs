@@ -3,6 +3,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using OnionProjectSystem.Application.Interfaces.Repositories;
 using OnionProjectSystem.Application.Interfaces.UnitOfWorks;
+using OnionProjectSystem.Domain.Entities;
 using OnionProjectSystem.Persistence.Context;
 using OnionProjectSystem.Persistence.Repositories;
 using OnionProjectSystem.Persistence.UnitOfWorks;
@@ -26,6 +27,19 @@ namespace OnionProjectSystem.Persistence
             services.AddScoped(typeof(IWriteRepository<>), typeof(WriteRepository<>));
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+            services.AddIdentityCore<User>(option =>
+            {
+                option.Password.RequireDigit = false;
+                option.Password.RequireLowercase = false;
+                option.Password.RequireUppercase = false;
+                option.Password.RequireNonAlphanumeric = false;
+                option.Password.RequiredLength = 2;
+                option.SignIn.RequireConfirmedEmail = false;
+
+            })
+                .AddRoles<Role>().
+                AddEntityFrameworkStores<OnionProjectSystemDbContext>();
         }
     }
 }
