@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OnionProjectSystem.Persistence.Context;
 
@@ -11,9 +12,11 @@ using OnionProjectSystem.Persistence.Context;
 namespace OnionProjectSystem.Persistence.Migrations
 {
     [DbContext(typeof(OnionProjectSystemDbContext))]
-    partial class OnionProjectSystemDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251019095555_IdentityDbContextAdded")]
+    partial class IdentityDbContextAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -1,10 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using OnionProjectSystem.Domain.Entities;
 using System.Reflection;
 
 namespace OnionProjectSystem.Persistence.Context
 {
-    public class OnionProjectSystemDbContext : DbContext
+    public class OnionProjectSystemDbContext : IdentityDbContext<User,Role,Guid>
     {
         public OnionProjectSystemDbContext()
         {
