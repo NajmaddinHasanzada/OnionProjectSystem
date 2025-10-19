@@ -3,6 +3,7 @@ using OnionProjectSystem.Application;
 using OnionProjectSystem.Infrastructure;
 using OnionProjectSystem.Mapper;
 using OnionProjectSystem.Application.Exceptions;
+using Microsoft.OpenApi.Models;
 namespace OnionProjectSystem.WebAPI
 {
     public class Program
@@ -30,6 +31,35 @@ namespace OnionProjectSystem.WebAPI
             builder.Services.AddApplication();
             builder.Services.AddCustomMapper();
             builder.Services.AddLogging();
+
+            builder.Services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new() { Title = "OnionProjectSystem WebAPI", Version = "v1", Description ="Onion architecture project API swagger client" });
+                c.AddSecurityDefinition("Bearer", new()
+                {
+                    Name = "Authorization",
+                    Type = SecuritySchemeType.ApiKey,
+                    Scheme = "Bearer",
+                    BearerFormat = "JWT",
+                    In = ParameterLocation.Header,
+                    Description = "Enter 'Bearer' [space] and then your valid token in the text input below.\r\n\r\nExample: \"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9\"",
+                });
+                c.AddSecurityRequirement(new()
+                {
+                    {
+                        new OpenApiSecurityScheme
+                        {
+                            Reference = new()
+                            {
+                                Type = ReferenceType.SecurityScheme,
+                                Id = "Bearer"
+                            }
+                        },
+                        new string[] {}
+                    }
+                });
+            });
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
