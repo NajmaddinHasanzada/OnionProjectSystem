@@ -1,5 +1,6 @@
 using OnionProjectSystem.Persistence;
 using OnionProjectSystem.Application;
+using OnionProjectSystem.Infrastructure;
 using OnionProjectSystem.Mapper;
 using OnionProjectSystem.Application.Exceptions;
 namespace OnionProjectSystem.WebAPI
@@ -25,6 +26,7 @@ namespace OnionProjectSystem.WebAPI
                 .AddJsonFile($"appsettings.{environment.EnvironmentName}.json",optional:true);
 
             builder.Services.AddPersistence(builder.Configuration);
+            builder.Services.AddInfrastructure(builder.Configuration);
             builder.Services.AddApplication();
             builder.Services.AddCustomMapper();
             builder.Services.AddLogging();
