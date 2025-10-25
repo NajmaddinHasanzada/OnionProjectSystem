@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using OnionProjectSystem.Application.Features.Auth.Command.Login;
 using OnionProjectSystem.Application.Features.Auth.Command.Register;
 
 namespace OnionProjectSystem.WebAPI.Controllers
@@ -20,6 +21,12 @@ namespace OnionProjectSystem.WebAPI.Controllers
         {
             await _mediator.Send(request);
             return StatusCode(StatusCodes.Status201Created);
+        }
+        [HttpPost]
+        public async Task<IActionResult> Login(LoginCommandRequest request)
+        {
+            var response = await _mediator.Send(request);
+            return StatusCode(StatusCodes.Status200OK, response);
         }
     }
 }
