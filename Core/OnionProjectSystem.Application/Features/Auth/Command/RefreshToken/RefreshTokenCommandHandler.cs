@@ -15,7 +15,7 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OnionProjectSystem.Application.Features.Auth.RefreshToken
+namespace OnionProjectSystem.Application.Features.Auth.Command.RefreshToken
 {
     public class RefreshTokenCommandHandler : BaseHandler, IRequestHandler<RefreshTokenCommandRequest, RefreshTokenCommandResponse>
     {

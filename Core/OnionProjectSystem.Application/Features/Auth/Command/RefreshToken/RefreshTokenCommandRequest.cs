@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OnionProjectSystem.Application.Features.Auth.RefreshToken
+namespace OnionProjectSystem.Application.Features.Auth.Command.RefreshToken
 {
     public class RefreshTokenCommandRequest:IRequest<RefreshTokenCommandResponse>
     {
