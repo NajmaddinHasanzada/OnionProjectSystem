@@ -35,5 +35,14 @@ namespace OnionProjectSystem.Application.Features.Auth.Rules
             }
             return Task.CompletedTask;
         }
+
+        public Task EmailAddressShouldBeValid(User? user)
+        {
+            if (user is null)
+            {
+                throw new EmailAddressShouldBeValidException();
+            }
+            return Task.CompletedTask;
+        }
     }
 }
