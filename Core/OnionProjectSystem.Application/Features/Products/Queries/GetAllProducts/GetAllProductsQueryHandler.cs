@@ -24,8 +24,7 @@ namespace OnionProjectSystem.Application.Features.Products.Queries.GetAllProduct
             foreach (var item in map)
             {
                 item.Price -= item.Price * item.Discount / 100;
-            }
-            
+            }         
             return map;
         }
     }
