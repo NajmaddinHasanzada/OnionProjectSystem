@@ -25,6 +25,7 @@ namespace OnionProjectSystem.Application
             ValidatorOptions.Global.LanguageManager.Culture = new System.Globalization.CultureInfo("az");
 
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(FluentValidationBehevior<,>));
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RedisCacheBehavior<,>));
         }
 
        private static IServiceCollection AddRulesFromAssemblyContaining(this IServiceCollection services, Assembly assembly, Type type)
